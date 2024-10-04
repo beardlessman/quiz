@@ -29,9 +29,7 @@ const Summary = ({ answers }) => {
                 {answers.map((answer, index) => {
                     let className = "user-answer";
 
-                    if (answer === null) {
-                        className += " skipped";
-                    } else if (answer === QUESTIONS[index].answers[0]) {
+                    if (answer.isCorrect) {
                         className += " correct";
                     } else {
                         className += " wrong";
