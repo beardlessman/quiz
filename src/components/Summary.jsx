@@ -2,14 +2,11 @@ import completeImg from "../assets/quiz-complete.png";
 import QUESTIONS from "../questions";
 
 const Summary = ({ answers }) => {
-    const skippedAnswers = answers.filter((answer) => answer === null);
-    const correctAnswers = answers.filter(
-        (answer, index) => answer === QUESTIONS[index].answers[0]
+    const correctAnswers = answers.filter((answer) => answer.isCorrect);
+    const correctPercent = Math.round(
+        (correctAnswers.length / answers.length) * 100
     );
-
-    const skippedPercent = Math.round((skippedAnswers.length / answers.length) * 100);
-    const correctPercent = Math.round((correctAnswers.length / answers.length) * 100);
-    const wrongPercent = 100 - skippedPercent - correctPercent;
+    const wrongPercent = 100 - correctPercent;
 
     return (
         <div id="summary">
